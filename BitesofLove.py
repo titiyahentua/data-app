@@ -7,8 +7,11 @@ from streamlit.connections import SQLConnection
 CONNECTION_NAME = "sqlite-db"
 DB_URL = "sqlite:///data/data.sqlite"
 VALID_TABLE_NAMES = [
-    "pet_owners",
-    "chinook_album",
+    "Request",
+    "Search",
+    "Booking",
+    "Host_Review",
+    "Listing",
 ]
 
 
