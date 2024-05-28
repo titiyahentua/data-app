@@ -1,10 +1,10 @@
 import streamlit as st
 from data import util
 
-st.title("Data seeding example")
+st.title("Use Case Tables")
 
 with st.form("form"):
-    submitted = st.form_submit_button("Seed data")
+    submitted = st.form_submit_button("View all data")
 
 if submitted:
     conn = util.get_connection()
@@ -72,6 +72,10 @@ if submitted:
     st.write("Table created:")
     st.dataframe(
          result_df,
+         use_container_width=True,
+         hide_index=True,
+     )
+
          use_container_width=True,
          hide_index=True,
      )
