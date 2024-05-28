@@ -1,0 +1,35 @@
+import streamlit as st
+from data import util
+
+st.title("Use Cases: Get by Values")
+
+st.warning("If you see errors, ensure you've created the table(s) first using the `Create & read` pages.")
+
+table_name = st.selectbox("Table name", util.VALID_TABLE_NAMES)
+
+conn = util.get_connection()
+columns_df = conn.query(
+    f"select name, type from pragma_table_info('{table_name}')",
+    ttl=0,  # don't cache results so changes in the database are immediately retrieved
+)
+column_name_raw = st.selectbox(
+    "Column name",
+    columns_df.itertuples(),
+    format_func=lambda row: f"{row.name} (datatype {row.type})",
+)
+column_name = column_name_raw.name
+value = st.text_input("Value to search")
+
+result_df = conn.query(
+    f"select * from {table_name} where {column_name} = :value",
+    params=dict(value=value),
+    ttl=0,  # don't cache results so changes in the database are immediately retrieved
+)
+
+num_rows_found = len(result_df)
+st.write(f'{num_rows_found} row{"" if num_rows_found == 1 else "s"} found for `{column_name} = {value}`')
+st.dataframe(
+    result_df,
+    use_container_width=True,
+    hide_index=True,
+)
