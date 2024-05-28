@@ -1,0 +1,28 @@
+import streamlit as st
+
+st.set_page_config(
+    page_title="Bites of Love",  # Change this for your group project
+    # page_icon="👋", # Uncoment and modify this if you wish
+)
+
+st.header("Bites of Love") # Change this for your group project
+st.write("Explore your options to rent available premises today.")  # Change this for your group project
+
+
+# Change the data function names and descriptions for your project project
+
+st.subheader("UC#1: Manage Search")
+st.write("Search for listed premises by premise name, price per session, and star rating.")
+st.write("\n")
+st.subheader("UC#2: Manage Request")
+st.write("Search for requests by premise name, EOI submission, request submission, request status, and service required.")
+st.write("\n")
+st.subheader("UC#3: Manage Listing")
+st.write("Search for published listings by premise name, facility type, address, amenities, price, description, media, and availability.")
+st.write("\n")
+st.subheader("UC#4: Manage Bookings")
+st.write("Search for bookings by tenant name, business name, booking date, check-in time, check-out time, and request status.")
+st.write("\n")
+st.subheader("UC#5: Manage Reviews")
+st.write("Search for reviews by tenant name, star rating, and written review.")
+st.write("\n")
